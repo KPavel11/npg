@@ -1,40 +1,50 @@
 import pygame
 pygame.init()
 
-
+# создаём класс start
 class start:
+    # Создаём функцию _init_
     def _init_():
         import pygame
         pygame.init()
         return pygame.init()
+    # Создаём функцию _world_
+    # Которая создаёт игровое окно, с высотой e, ширеной x, и названием name
     def _world_(x: int, y: int, name: str):
-        
         dis = pygame.display.set_mode((x, y))
         pygame.display.set_caption(name)
         return dis
+    # Создаём функцию _start_ которая запускает файл file
     def _start_(file: str):
         import os 
         a = 'start ' + file
         os.system(a)
         return os.system(a)
+    # Создаём функцию _game_  которая скачивает модуль pygame
     def _game_():
         import subprocess
         module = "pygame"
         subprocess.run(["pip", "install", module, "--upgrade"])
-
+# создаём класс new
 class new:
-
+    # Создаём функцию _world_
+    # Которая создаёт игровое окно, с высотой e, ширеной x, и названием name
     def _world_(x: int, y: int, name: str):
         dis = pygame.display.set_mode((x, y))
         pygame.display.set_caption(name)
         return dis
+    # Создаём функцию _list_ которая создоёт файл name
     def _list_(name: str):
         inf = open(name,'w')
         inf.close
+    # Создаём функцию costume
+    # Которая создоёт новый костюм с помощю файла file c расширением .png и размером px (в пиксилях)
     def costume(file: str, px: int):
         sprite = pygame.image.load(file)
         sprite = pygame.transform.scale(sprite, (px, px))
         return sprite
+    # Создаём функцию costumes
+    # Которая создоёт новый костюмы с помощю списка файлов files c расширением .png и размером px (в пиксилях)
     def costumes(files: list, px: int):
         costumes = []
         for i in files:
@@ -42,37 +52,54 @@ class new:
             sprite = pygame.transform.scale(sprite, (px, px))
             costumes += [sprite]
         return costumes
+# создаём класс draw
 class draw:
+    # Создаём функцию sprite
+    # Которая отрисовывает квадратную картинку на экране(его надо указать в dis) с помощю файла file c расширением .png, с размером px (в пиксилях), на координатах x,y
     def sprite(x: int, y: int, px: int, file: str, dis):
-        
         sprite = pygame.image.load(file)
         sprite = pygame.transform.scale(sprite, (px, px))
         xx = x - (px / 2)
         yy = y - (px / 2)
         dis.blit(sprite, (xx, yy))
         return sprite
+    # Создаём функцию animation
+    ''' 
+    Которая отрисовывает квадратную картинку на экране(его надо указать в dis) с помощю списка файлов costumes c расширением .png, 
+    номер нужной картинки из списка costumes надо указать в nymder, 
+    с размером px (в пиксилях), на координатах x,y
+    '''
     def animation(x: int, y: int, costumes: list, nymder: int, px: int, dis):
         sprite = costumes[nymder]
         xx = x - (px / 2)
         yy = y - (px / 2)
         dis.blit(sprite, (xx, yy))
         return sprite
+    # Создаём функцию costume
+    # Которая отрисовывает квадратную картинку на экране(его надо указать в dis) с помощю переменной costume(которая создаётся в функции new.costume), с размером px (в пиксилях), на координатах x,y
     def costume(x: int, y: int, costume, px: int, dis):
         sprite = costume
         xx = x - (px / 2)
         yy = y - (px / 2)
         dis.blit(sprite, (xx, yy))
         return sprite
+    # Создаём функцию back_picture
+    # Которая отрисовывает квадратную картинку на экране(его надо указать в dis) с помощю файла file c расширением .png, с размером window_size пример((400, 400)), на координатах x,y (по умолчанию 0)
     def back_picture(file: str, dis, window_size, x = 0, y = 0):
-        
         background_picture = pygame.image.load(file)
         background_picture = pygame.transform.scale(background_picture, window_size)
         dis.blit(background_picture, (x, y))
         return background_picture
+
+    # Создаём функцию back_collor
+    # Которая заполняет весь экран (dis) цветом (collor)
     def back_collor(dis, collor):
         dis.fill(collor)
         return
+    # создаём класс figure
     class figure:
+        # Создаём функцию rect
+        # Которая отрисовывает прямоугольный участок на экране(его надо указать в dis) с высотой w и ширеной h на координатах x,y и цветом collor
         def rect(x: int, y: int, h: int, w: int, dis, collor):
             xx = x - (h / 2)
             yy = y - (w / 2)
